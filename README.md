@@ -97,7 +97,7 @@ cat
 dog
 ...
 ```
-8、运行train.py即可开始训练。
+8、运行train.py即可开始训练。         
 9、2020.12.03更新,目前所使用的annotation檔案路徑為相對位置,因此在使用時須先將utils.py裡的Image.OPEN中的路徑做修改
 
 ### mAP目标检测精度计算更新
