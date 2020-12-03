@@ -41,7 +41,7 @@ class YOLO(object):
         self.__dict__.update(self._defaults)
         self.class_names = self._get_class()
         self.anchors = self._get_anchors()
-        self.sess = backend.set_session(session)
+#         self.sess = backend.set_session(session)
         self.sess = backend.get_session
         self.boxes, self.scores, self.classes = self.generate()
 
