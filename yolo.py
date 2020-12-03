@@ -42,7 +42,7 @@ class YOLO(object):
         self.class_names = self._get_class()
         self.anchors = self._get_anchors()
 #         self.sess = backend.set_session(session)
-        self.sess = self.get_session
+        self.sess = get_session()
         self.boxes, self.scores, self.classes = self.generate()
 
     #---------------------------------------------------#
