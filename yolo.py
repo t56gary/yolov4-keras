@@ -16,7 +16,7 @@ from tensorflow.compat.v1.keras.backend import get_session
 #--------------------------------------------#
 class YOLO(object):
     _defaults = {
-        "model_path"        : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/ep068-loss4.088-val_loss3.863.h5',
+        "model_path"        : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/h5/2020_12_03_12:50:00/last1.h5',
         "anchors_path"      : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/yolo_anchors.txt',
         "classes_path"      : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/model_data/bccd_classes.txt',
         "score"             : 0.7,
