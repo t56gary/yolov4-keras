@@ -9,6 +9,7 @@ from keras.layers import Input
 from PIL import Image, ImageFont, ImageDraw
 from nets.yolo4 import yolo_body,yolo_eval
 from utils.utils import letterbox_image
+from tf.compat.v1.keras.backend import get_session
 #--------------------------------------------#
 #   使用自己训练好的模型预测需要修改2个参数
 #   model_path和classes_path都需要修改！
@@ -40,7 +41,7 @@ class YOLO(object):
         self.__dict__.update(self._defaults)
         self.class_names = self._get_class()
         self.anchors = self._get_anchors()
-        self.sess = K.get_session()
+        self.sess = get_session()
         self.boxes, self.scores, self.classes = self.generate()
 
     #---------------------------------------------------#
