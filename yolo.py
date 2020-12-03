@@ -19,8 +19,8 @@ class YOLO(object):
         "model_path"        : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/ep068-loss4.088-val_loss3.863.h5',
         "anchors_path"      : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/yolo_anchors.txt',
         "classes_path"      : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/model_data/bccd_classes.txt',
-        "score"             : 0.5,
-        "iou"               : 0.5,
+        "score"             : 0.7,
+        "iou"               : 0.3,
         "max_boxes"         : 100,
         # 显存比较小可以使用416x416
         # 显存比较大可以使用608x608
