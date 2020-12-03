@@ -115,6 +115,14 @@ class YOLO(object):
     def detect_image(self, image):
         start = timer()
 
+        #加入不重複標框判斷式的宣告
+        s1=0
+        s2=0
+        s3=0
+        c1=[]
+        c2=[]
+        c3=[]
+
         # 调整图片使其符合输入要求
         new_image_size = (self.model_image_size[1],self.model_image_size[0])
         boxed_image = letterbox_image(image, new_image_size)
@@ -150,10 +158,34 @@ class YOLO(object):
             bottom = bottom + 5
             right = right + 5
 
-            top = max(0, np.floor(top + 0.5).astype('int32'))
-            left = max(0, np.floor(left + 0.5).astype('int32'))
-            bottom = min(image.size[1], np.floor(bottom + 0.5).astype('int32'))
-            right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
+            if predicted_class=="clownfish1" and score>s1:
+                top, left, bottom, right = box
+                top = max(0, np.floor(top + 0.5).astype('int32'))
+                left = max(0, np.floor(left + 0.5).astype('int32'))
+                bottom = min(image.size[1], np.floor(bottom + 0.5).astype('int32'))
+                right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
+                s1=score
+                predicted_class = "小丑魚1"
+                c1 = [predicted_class, score, left, top, right, bottom]
+            elif predicted_class=="clownfish2" and score>s2:
+                top, left, bottom, right = box
+                top = max(0, np.floor(top + 0.5).astype('int32'))
+                left = max(0, np.floor(left + 0.5).astype('int32'))
+                bottom = min(image.size[1], np.floor(bottom + 0.5).astype('int32'))
+                right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
+                s2=score
+                predicted_class = "小丑魚2"
+                c2 = [predicted_class, score, left, top, right, bottom]
+            if predicted_class=="clownfish3" and score>s3:
+                top, left, bottom, right = box
+                top = max(0, np.floor(top + 0.5).astype('int32'))
+                left = max(0, np.floor(left + 0.5).astype('int32'))
+                bottom = min(image.size[1], np.floor(bottom + 0.5).astype('int32'))
+                right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
+                s3=score
+                predicted_class = "小丑魚3"
+                c3 = [predicted_class, score, left, top, right, bottom]
+            
 
             # 画框框
             label = '{} {:.2f}'.format(predicted_class, score)
@@ -167,15 +199,34 @@ class YOLO(object):
             else:
                 text_origin = np.array([left, top + 1])
 
+        if c1!=[]:
+            print("c1")
+            label = '{} '.format(c1[0])
             for i in range(thickness):
+            # print(i)
                 draw.rectangle(
-                    [left + i, top + i, right - i, bottom - i],
-                    outline=self.colors[c])
-            draw.rectangle(
-                [tuple(text_origin), tuple(text_origin + label_size)],
-                fill=self.colors[c])
-            draw.text(text_origin, str(label,'UTF-8'), fill=(0, 0, 0), font=font)
-            del draw
+                    [c1[2] + i, c1[3] + i, c1[4] - i, c1[5] - i],
+                    outline=(255,0,0))
+
+                draw.text([c1[2]+10,c1[3]-75],label, fill=(255,0,0), font=font)
+        if c2!=[]:
+            print("c2")
+            label = '{} '.format(c2[0])
+            for i in range(thickness):
+            # print(i)
+                draw.rectangle(
+                    [c2[2] + i, c2[3] + i, c2[4] - i, c2[5] - i],
+                    outline=(0,255,0))
+                draw.text([c2[2]+10,c2[3]-75],label, fill=(0,255,0), font=font)
+        if c3!=[]:
+            print("c3")
+            label = '{} '.format(c3[0])
+            for i in range(thickness):
+            # print(i)
+                draw.rectangle(
+                    [c3[2] + i, c3[3] + i, c3[4] - i, c3[5] - i],
+                    outline=(0,0,255))
+                draw.text([c3[2]+10,c3[3]-75],label, fill=(0,0,255), font=font)
 
         end = timer()
         print(end - start)
