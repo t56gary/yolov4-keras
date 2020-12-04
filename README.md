@@ -1,13 +1,13 @@
-## YOLOV4：You Only Look Once目标检测模型在Keras当中的实现
+## YOLOV4：You Only Look Once 目標檢測模型在Keras當中的實現
 ---
 
-### 目录
-1. [性能情况 Performance](#性能情况)
-2. [实现的内容 Achievement](#实现的内容)
-3. [所需环境 Environment](#所需环境)
-4. [注意事项 Attention](#注意事项)
-5. [小技巧的设置 TricksSet](#小技巧的设置)
-6. [文件下载 Download](#文件下载)
+### 目錄
+1. [性能情況 Performance](#性能情況)
+2. [實現的內容 Achievement](#實現的內容)
+3. [所需環境 Environment](#所需環境)
+4. [注意事項 Attention](#注意事項)
+5. [小技巧的設置 TricksSet](#小技巧的設置)
+6. [文件下載 Download](#文件下載)           
 7. [预测步骤 How2predict](#预测步骤)
 8. [训练步骤 How2train](#训练步骤)
 9. [参考资料 Reference](#Reference)
