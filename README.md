@@ -8,47 +8,47 @@
 4. [注意事項 Attention](#注意事項)
 5. [小技巧的設置 TricksSet](#小技巧的設置)
 6. [文件下載 Download](#文件下載)           
-7. [预测步骤 How2predict](#预测步骤)
-8. [训练步骤 How2train](#训练步骤)
-9. [参考资料 Reference](#Reference)
+7. [預測步驟 How2predict](#預測步驟)
+8. [訓練步驟 How2train](#訓練步驟)
+9. [參考資料 Reference](#Reference)
 
 ### 性能情况
-| 训练数据集 | 权值文件名称 | 测试数据集 | 输入图片大小 | mAP 0.5:0.95 | mAP 0.5 |
+| 訓練數據集 | 權值文件名稱 | 測試數據集 | 輸入圖片大小 | mAP 0.5:0.95 | mAP 0.5 |
 | :-----: | :-----: | :------: | :------: | :------: | :-----: |
 | VOC07+12+COCO | [yolo4_voc_weights.h5](https://github.com/bubbliiiing/yolov4-keras/releases/download/v1.0/yolo4_voc_weights.h5) | VOC-Test07 | 416x416 | - | 84.1
 | COCO-Train2017 | [yolo4_weight.h5](https://github.com/bubbliiiing/yolov4-keras/releases/download/v1.0/yolo4_weight.h5) | COCO-Val2017 | 416x416 | 43.1 | 66.0
 
-### 实现的内容
-- [x] 主干特征提取网络：DarkNet53 => CSPDarkNet53
-- [x] 特征金字塔：SPP，PAN
-- [x] 训练用到的小技巧：Mosaic数据增强、Label Smoothing平滑、CIOU、学习率余弦退火衰减
-- [x] 激活函数：使用Mish激活函数
+### YOLOV4實現的內容
+- [x] 主要特徵擷取(backcone)：DarkNet53 => CSPDarkNet53
+- [x] 特徵整合(Neck)：SPP，PAN
+- [x] 訓練用到的小技巧：Mosaic數據增強、Label Smoothing平滑、CIOU、learningrate Cosine Annealing
+- [x] 激活函數：使用Mish激活函數
 - [ ] ……balabla
 
-### 所需环境
+### 所需環境
 tensorflow-gpu==1.13.1  
 keras==2.1.5  
 
-### 注意事项
-代码中的yolo4_weights.h5是基于608x608的图片训练的，但是由于显存原因。我将代码中的图片大小修改成了416x416。有需要的可以修改回来。 代码中的默认anchors是基于608x608的图片的。   
-**注意不要使用中文标签，文件夹中不要有空格！**   
-**在训练前需要务必在model_data下新建一个txt文档，文档中输入需要分的类，在train.py中将classes_path指向该文件**。  
+### 注意事項
+code中的yolo4_weights.h5是基於608x608的圖片訓練的，但是由於顯存原因。我將代碼中的圖片大小修改成了416x416。有需要的可以修改回來。code中的默認anchors是基於608x608的圖片的。
+**注意不要使用中文標籤，文件夾中不要有空格！ **
+**在訓練前需要務必在model_data下新建一個txt文檔，文檔中輸入需要分的類，在train.py中將classes_path指向該文件**。
 
-### 小技巧的设置
+### 小技巧的設置
 在train.py文件下：   
-1、mosaic参数可用于控制是否实现Mosaic数据增强。   
-2、Cosine_scheduler可用于控制是否使用学习率余弦退火衰减。   
-3、label_smoothing可用于控制是否Label Smoothing平滑。
+1、mosaic參數可用於控制是否實現Mosaic數據增強。
+2、Cosine_scheduler可用於控制是否使用learningrate Cosine Annealing。
+3、label_smoothing可用於控制是否Label Smoothing平滑。
 
 ### 文件下载
-训练所需的yolo4_weights.h5可在百度网盘中下载。  
-链接: https://pan.baidu.com/s/1FF79PmRc8BzZk8M_ARdMmw 提取码: dc2j  
-yolo4_weights.h5是coco数据集的权重。  
-yolo4_voc_weights.h5是voc数据集的权重。
+訓練所需的yolo4_weights.h5可在百度網盤中下載。
+鏈接: https://pan.baidu.com/s/1FF79PmRc8BzZk8M_ARdMmw 提取碼: dc2j
+yolo4_weights.h5是coco數據集的權重。
+yolo4_voc_weights.h5是voc數據集的權重。
 
-### 预测步骤
-#### 1、使用预训练权重
-a、下载完库后解压，在百度网盘下载yolo4_weights.h5或者yolo4_voc_weights.h5，放入model_data，运行predict.py，输入  
+### 預測步驟
+#### 1、使用pre-train權重
+a、下載完庫後解壓，在百度網盤下載yolo4_weights.h5或者yolo4_voc_weights.h5，放入model_data，運行predict.py，輸入
 ```python
 img/street.jpg
 ```
