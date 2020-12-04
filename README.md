@@ -78,11 +78,12 @@ img/street.jpg
 d、利用video.py可進行camera檢測。  
 
 ### 訓練步驟
-1、本文使用VOC格式進行訓練。
-2、訓練前將標籤文件放在VOCdevkit文件夾下的VOC2007文件夾下的Annotation中。
-3、訓練前將圖片文件放在VOCdevkit文件夾下的VOC2007文件夾下的JPEGImages中。
-4、在訓練前利用voc2yolo4.py文件生成對應的txt。
-5、再運行根目錄下的voc_annotation.py，運行前需要將classes改成你自己的classes。 **注意不要使用中文標籤，文件夾中不要有空格！ **  
+1、本文使用VOC格式進行訓練。            
+2、訓練前將標籤文件放在VOCdevkit文件夾下的VOC2007文件夾下的Annotation中。          
+3、訓練前將圖片文件放在VOCdevkit文件夾下的VOC2007文件夾下的JPEGImages中。          
+4、在訓練前利用voc2yolo4.py文件生成對應的txt。         
+5、再運行根目錄下的voc_annotation.py，運行前需要將classes改成你自己的classes。             
+**注意不要使用中文標籤，文件夾中不要有空格！ **  
 ```python
 classes = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
 ```
