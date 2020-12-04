@@ -87,7 +87,7 @@ d、利用video.py可進行camera檢測。
 ```python
 classes = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
 ```
-6、此時會生成對應的2007_train.txt，每一行對應其**圖片位置**及其**真實框的位置**。
+6、此時會生成對應的2007_train.txt，每一行對應其**圖片位置**及其**真實框的位置**。            
 7、**在訓練前需要務必在model_data下新建一個txt文檔，文檔中輸入需要分的類，在train.py中將classes_path指向該文件**，示例如下：
 ```python
 classes_path = 'model_data/new_classes.txt'    
