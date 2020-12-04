@@ -36,9 +36,9 @@ code中的yolo4_weights.h5是基於608x608的圖片訓練的，但是由於顯�
 
 ### 小技巧的設置
 在train.py文件下：   
-1、mosaic參數可用於控制是否實現Mosaic數據增強。
-2、Cosine_scheduler可用於控制是否使用learningrate Cosine Annealing。
-3、label_smoothing可用於控制是否Label Smoothing平滑。
+1、mosaic參數可用於控制是否實現Mosaic數據增強。          
+2、Cosine_scheduler可用於控制是否使用learningrate Cosine Annealing。           
+3、label_smoothing可用於控制是否Label Smoothing平滑。          
 
 ### 文件下载
 訓練所需的yolo4_weights.h5可在百度網盤中下載。
