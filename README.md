@@ -52,11 +52,11 @@ a、下載完庫後解壓，在百度網盤下載yolo4_weights.h5或者yolo4_voc
 ```python
 img/street.jpg
 ```
-可完成预测。  
-b、利用video.py可进行摄像头检测。  
-#### 2、使用自己训练的权重
-a、按照训练步骤训练。  
-b、在yolo.py文件里面，在如下部分修改model_path和classes_path使其对应训练好的文件；**model_path对应logs文件夹下面的权值文件，classes_path是model_path对应分的类**。  
+可完成預測。  
+b、利用video.py可進行camera檢測。  
+#### 2、使用自己train的權重
+a、按照訓練步驟訓練。  
+b、在yolo.py文件裡面，在如下部分修改model_path和classes_path使其對應訓練好的文件；**model_path對應logs文件夾下面的權值文件，classes_path是model_path對應分的類**。
 ```python
 _defaults = {
     "model_path": 'model_data/yolo4_weight.h5',
@@ -64,46 +64,46 @@ _defaults = {
     "classes_path": 'model_data/coco_classes.txt,
     "score" : 0.5,
     "iou" : 0.3,
-    # 显存比较小可以使用416x416
-    # 显存比较大可以使用608x608
+    # 顯存比較小可以使用416x416
+    # 顯存比較大可以使用608x608
     "model_image_size" : (416, 416)
 }
 
 ```
-c、运行predict.py，输入  
+c、運行predict.py，輸入
 ```python
 img/street.jpg
 ```
-可完成预测。  
-d、利用video.py可进行摄像头检测。  
+可完成預測。  
+d、利用video.py可進行camera檢測。  
 
-### 训练步骤
-1、本文使用VOC格式进行训练。  
-2、训练前将标签文件放在VOCdevkit文件夹下的VOC2007文件夹下的Annotation中。  
-3、训练前将图片文件放在VOCdevkit文件夹下的VOC2007文件夹下的JPEGImages中。  
-4、在训练前利用voc2yolo4.py文件生成对应的txt。  
-5、再运行根目录下的voc_annotation.py，运行前需要将classes改成你自己的classes。**注意不要使用中文标签，文件夹中不要有空格！**   
+### 訓練步驟
+1、本文使用VOC格式進行訓練。
+2、訓練前將標籤文件放在VOCdevkit文件夾下的VOC2007文件夾下的Annotation中。
+3、訓練前將圖片文件放在VOCdevkit文件夾下的VOC2007文件夾下的JPEGImages中。
+4、在訓練前利用voc2yolo4.py文件生成對應的txt。
+5、再運行根目錄下的voc_annotation.py，運行前需要將classes改成你自己的classes。 **注意不要使用中文標籤，文件夾中不要有空格！ **  
 ```python
 classes = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train", "tvmonitor"]
 ```
-6、此时会生成对应的2007_train.txt，每一行对应其**图片位置**及其**真实框的位置**。  
-7、**在训练前需要务必在model_data下新建一个txt文档，文档中输入需要分的类，在train.py中将classes_path指向该文件**，示例如下：   
+6、此時會生成對應的2007_train.txt，每一行對應其**圖片位置**及其**真實框的位置**。
+7、**在訓練前需要務必在model_data下新建一個txt文檔，文檔中輸入需要分的類，在train.py中將classes_path指向該文件**，示例如下：
 ```python
 classes_path = 'model_data/new_classes.txt'    
 ```
-model_data/new_classes.txt文件内容为：   
+model_data/new_classes.txt內容為：   
 ```python
 cat
 dog
 ...
 ```
-8、运行train.py即可开始训练。         
+8、運行train.py即可開始訓練。
 9、2020.12.03更新,目前所使用的annotation檔案路徑為相對位置,因此在使用時須先將utils.py裡的Image.OPEN中的路徑做修改
 
-### mAP目标检测精度计算更新
-更新了get_gt_txt.py、get_dr_txt.py和get_map.py文件。  
-get_map文件克隆自https://github.com/Cartucho/mAP  
-具体mAP计算过程可参考：https://www.bilibili.com/video/BV1zE411u7Vw
+### mAP目標檢測精度計算更新
+更新了get_gt_txt.py、get_dr_txt.py和get_map.py文件。
+get_map文件克隆自https://github.com/Cartucho/mAP
+具體mAP計算過程可參考：https://www.bilibili.com/video/BV1zE411u7Vw
 
 ### Reference
 https://github.com/qqwweee/keras-yolo3/  
