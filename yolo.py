@@ -19,8 +19,8 @@ class YOLO(object):
         "model_path"        : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/h5/2020_12_03_12:50:00/last1.h5',
         "anchors_path"      : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/yolo_anchors.txt',
         "classes_path"      : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/model_data/bccd_classes.txt',
-        "score"             : 0.7,
-        "iou"               : 0.3,
+        "score"             : 0.4,
+        "iou"               : 0.6,
         "max_boxes"         : 100,
         # 显存比较小可以使用416x416
         # 显存比较大可以使用608x608
