@@ -24,7 +24,7 @@ class YOLO(object):
         "max_boxes"         : 100,
         # 显存比较小可以使用416x416
         # 显存比较大可以使用608x608
-        "model_image_size"  : (224, 224)
+        "model_image_size"  : (416, 416)
     }
 #     _defaults = {
 #         "model_path"        : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/h5/2020_12_05_15:00:00/ep133-loss2.364-val_loss2.243.h5',
