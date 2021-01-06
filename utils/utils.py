@@ -116,7 +116,7 @@ def get_random_data_with_Mosaic(annotation_line, input_shape, max_boxes=100, hue
         # 每一行进行分割
         line_content = line.split()
         # 打开图片
-        image = Image.open('/content/drive/MyDrive/Colab Notebooks/Yolo_v4/'+line_content[0])
+        image = Image.open('/content/drive/MyDrive/Colab Notebooks/mango/'+line_content[0])
         image = image.convert("RGB") 
         # 图片的大小
         iw, ih = image.size
@@ -209,7 +209,7 @@ def get_random_data_with_Mosaic(annotation_line, input_shape, max_boxes=100, hue
 def get_random_data(annotation_line, input_shape, max_boxes=100, jitter=.3, hue=.1, sat=1.5, val=1.5):
     '''random preprocessing for real-time data augmentation'''
     line = annotation_line.split()
-    image = Image.open('/content/drive/MyDrive/Colab Notebooks/Yolo_v4/'+line[0])
+    image = Image.open('/content/drive/MyDrive/Colab Notebooks/mango/'+line[0])
     iw, ih = image.size
     h, w = input_shape
     box = np.array([np.array(list(map(int,box.split(',')))) for box in line[1:]])
