@@ -16,9 +16,9 @@ from tensorflow.compat.v1.keras.backend import get_session
 #--------------------------------------------#
 class YOLO(object):
     _defaults = {
-        "model_path"        : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/h5/2020_12_05_15:00:00/ep133-loss2.364-val_loss2.243.h5',
-        "anchors_path"      : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/yolo_anchors.txt',
-        "classes_path"      : '/content/drive/MyDrive/AI鯉魚王/Yolo_v4/model_data/bccd_classes.txt',
+        "model_path"        : '/content/drive/MyDrive/Colab Notebooks/mango/h5/ep044-loss12.058-val_loss10.655.h5',
+        "anchors_path"      : '/content/drive/MyDrive/Colab Notebooks/mango/anchor.txt',
+        "classes_path"      : '/content/drive/MyDrive/Colab Notebooks/mango/classes.txt',
         "score"             : 0.4,
         "iou"               : 0.6,
         "max_boxes"         : 100,
@@ -169,33 +169,33 @@ class YOLO(object):
             bottom = bottom + 5
             right = right + 5
 
-            if predicted_class=="clownfish1" and score>s1:
-                top, left, bottom, right = box
-                top = max(0, np.floor(top + 0.5).astype('int32'))
-                left = max(0, np.floor(left + 0.5).astype('int32'))
-                bottom = min(image.size[1], np.floor(bottom + 0.5).astype('int32'))
-                right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
-                s1=score
-                predicted_class = "小丑魚1"
-                c1 = [predicted_class, score, left, top, right, bottom]
-            elif predicted_class=="clownfish2" and score>s2:
-                top, left, bottom, right = box
-                top = max(0, np.floor(top + 0.5).astype('int32'))
-                left = max(0, np.floor(left + 0.5).astype('int32'))
-                bottom = min(image.size[1], np.floor(bottom + 0.5).astype('int32'))
-                right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
-                s2=score
-                predicted_class = "小丑魚2"
-                c2 = [predicted_class, score, left, top, right, bottom]
-            if predicted_class=="clownfish3" and score>s3:
-                top, left, bottom, right = box
-                top = max(0, np.floor(top + 0.5).astype('int32'))
-                left = max(0, np.floor(left + 0.5).astype('int32'))
-                bottom = min(image.size[1], np.floor(bottom + 0.5).astype('int32'))
-                right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
-                s3=score
-                predicted_class = "小丑魚3"
-                c3 = [predicted_class, score, left, top, right, bottom]
+#             if predicted_class=="clownfish1" and score>s1:
+#                 top, left, bottom, right = box
+#                 top = max(0, np.floor(top + 0.5).astype('int32'))
+#                 left = max(0, np.floor(left + 0.5).astype('int32'))
+#                 bottom = min(image.size[1], np.floor(bottom + 0.5).astype('int32'))
+#                 right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
+#                 s1=score
+#                 predicted_class = "小丑魚1"
+#                 c1 = [predicted_class, score, left, top, right, bottom]
+#             elif predicted_class=="clownfish2" and score>s2:
+#                 top, left, bottom, right = box
+#                 top = max(0, np.floor(top + 0.5).astype('int32'))
+#                 left = max(0, np.floor(left + 0.5).astype('int32'))
+#                 bottom = min(image.size[1], np.floor(bottom + 0.5).astype('int32'))
+#                 right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
+#                 s2=score
+#                 predicted_class = "小丑魚2"
+#                 c2 = [predicted_class, score, left, top, right, bottom]
+#             if predicted_class=="clownfish3" and score>s3:
+#                 top, left, bottom, right = box
+#                 top = max(0, np.floor(top + 0.5).astype('int32'))
+#                 left = max(0, np.floor(left + 0.5).astype('int32'))
+#                 bottom = min(image.size[1], np.floor(bottom + 0.5).astype('int32'))
+#                 right = min(image.size[0], np.floor(right + 0.5).astype('int32'))
+#                 s3=score
+#                 predicted_class = "小丑魚3"
+#                 c3 = [predicted_class, score, left, top, right, bottom]
             
 
             # 画框框
@@ -209,35 +209,45 @@ class YOLO(object):
                 text_origin = np.array([left, top - label_size[1]])
             else:
                 text_origin = np.array([left, top + 1])
+                
+            for i in range(thickness):
+                draw.rectangle(
+                    [left + i, top + i, right - i, bottom - i],
+                    outline=self.colors[c])
+            draw.rectangle(
+                [tuple(text_origin), tuple(text_origin + label_size)],
+                fill=self.colors[c])
+            draw.text(text_origin, str(label,'UTF-8'), fill=(0, 0, 0), font=font)
+            del draw
 
-        if c1!=[]:
-            print("c1")
-            label = '{} '.format(c1[0])
-            for i in range(thickness):
-            # print(i)
-                draw.rectangle(
-                    [c1[2] + i, c1[3] + i, c1[4] - i, c1[5] - i],
-                    outline=(255,0,0))
+#         if c1!=[]:
+#             print("c1")
+#             label = '{} '.format(c1[0])
+#             for i in range(thickness):
+#             # print(i)
+#                 draw.rectangle(
+#                     [c1[2] + i, c1[3] + i, c1[4] - i, c1[5] - i],
+#                     outline=(255,0,0))
 
-                draw.text([c1[2]+10,c1[3]-75],label, fill=(255,0,0), font=font)
-        if c2!=[]:
-            print("c2")
-            label = '{} '.format(c2[0])
-            for i in range(thickness):
-            # print(i)
-                draw.rectangle(
-                    [c2[2] + i, c2[3] + i, c2[4] - i, c2[5] - i],
-                    outline=(0,255,0))
-                draw.text([c2[2]+10,c2[3]-75],label, fill=(0,255,0), font=font)
-        if c3!=[]:
-            print("c3")
-            label = '{} '.format(c3[0])
-            for i in range(thickness):
-            # print(i)
-                draw.rectangle(
-                    [c3[2] + i, c3[3] + i, c3[4] - i, c3[5] - i],
-                    outline=(0,0,255))
-                draw.text([c3[2]+10,c3[3]-75],label, fill=(0,0,255), font=font)
+#                 draw.text([c1[2]+10,c1[3]-75],label, fill=(255,0,0), font=font)
+#         if c2!=[]:
+#             print("c2")
+#             label = '{} '.format(c2[0])
+#             for i in range(thickness):
+#             # print(i)
+#                 draw.rectangle(
+#                     [c2[2] + i, c2[3] + i, c2[4] - i, c2[5] - i],
+#                     outline=(0,255,0))
+#                 draw.text([c2[2]+10,c2[3]-75],label, fill=(0,255,0), font=font)
+#         if c3!=[]:
+#             print("c3")
+#             label = '{} '.format(c3[0])
+#             for i in range(thickness):
+#             # print(i)
+#                 draw.rectangle(
+#                     [c3[2] + i, c3[3] + i, c3[4] - i, c3[5] - i],
+#                     outline=(0,0,255))
+#                 draw.text([c3[2]+10,c3[3]-75],label, fill=(0,0,255), font=font)
 
         end = timer()
         print(end - start)
