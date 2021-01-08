@@ -19,8 +19,8 @@ class YOLO(object):
         "model_path"        : '/content/drive/MyDrive/Colab Notebooks/mango/h5/ep044-loss12.058-val_loss10.655.h5',
         "anchors_path"      : '/content/drive/MyDrive/Colab Notebooks/mango/anchor.txt',
         "classes_path"      : '/content/drive/MyDrive/Colab Notebooks/mango/classes.txt',
-        "score"             : 0.4,
-        "iou"               : 0.6,
+        "score"             : 0.2,
+        "iou"               : 0.3,
         "max_boxes"         : 100,
         # 显存比较小可以使用416x416
         # 显存比较大可以使用608x608
